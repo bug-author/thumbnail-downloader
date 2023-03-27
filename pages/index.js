@@ -12,7 +12,6 @@ import DMCA from '@/components/DMCA';
 export default function Home() {
   const [search, setSearch] = useState('');
   const [ytimage, setYtimage] = useState(null);
-  const [error, setError] = useState(null);
 
   const extractVideoId = () => {
     const youtubeRegex =
@@ -21,7 +20,7 @@ export default function Home() {
     const idRegex2 = /([^&]+)/;
 
     if (!youtubeRegex.test(search)) {
-      setError('ID not valid');
+      alert('ID not valid');
 
       return null;
     }
@@ -29,18 +28,18 @@ export default function Home() {
     if (search.match(idRegex)) {
       const videoId = search.match(idRegex);
       if (!videoId || videoId.length < 2) {
-        setError('ID not valid');
+        alert('ID not valid');
         return null;
       }
-      console.log(videoId[1]);
-      setYtimage(`https://img.youtube.com/vi/${videoId[1]}/mqdefault.jpg`);
+
+      setYtimage(`https://img.youtube.com/vi/${videoId[1]}/maxresdefault.jpg`);
 
       return videoId[1];
     }
     if (search.match(idRegex2)) {
       const videoId = search.match(idRegex2);
       if (!videoId || videoId.length < 2) {
-        setError('ID not valid');
+        alert('ID not valid');
         return null;
       }
 
@@ -94,13 +93,11 @@ export default function Home() {
             </button>
           </div>
 
-          {/* {error && <div className='text-3xl text-[#DE1B55] '>{error}</div>} */}
-
           <div className=' mx-auto max-w-[1240px]  sm:mt-2 md:mt-12 mt-[0.2rem]'>
             <DownloadSection ytimage={ytimage} />
           </div>
 
-          {ytimage === null ? (
+          {ytimage === null && (
             <div className='w-full  md:mt-[4rem] lg:mt-[6.5rem] sm:mt-[8rem] mt-[8.8rem]'>
               <div className='max-w-[1240px] mx-auto sm:text-xl text-sm font-bold md:text-2xl flex items-center justify-center  sm:gap-10 gap-2 px-1 '>
                 <div className='grid grid-rows-2 text-center  items-center justify-center'>
@@ -131,8 +128,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          ) : (
-            <></>
           )}
         </div>
       </section>
