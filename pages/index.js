@@ -32,7 +32,7 @@ export default function Home() {
         return null;
       }
 
-      setYtimage(`https://img.youtube.com/vi/${videoId[1]}/maxresdefault.jpg`);
+      setYtimage(`https://img.youtube.com/vi/${videoId[1]}/hqdefault.jpg`);
 
       return videoId[1];
     }
