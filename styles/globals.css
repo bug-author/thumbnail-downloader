@@ -8,9 +8,9 @@ html {
 }
 
 .home {
-  background-image: url('bg-image.png');
+  background-image: url('./bg-image.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
-  height:105vh;
+  background-size: cover;
+  height: 105vh;
 }
